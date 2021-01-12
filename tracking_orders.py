@@ -14,8 +14,6 @@ def trackingIdDecryption(trackingNumber):
                             'R': 'd', 'S': 'e', 'T': 'f', 'U': 'g', 'V': 'h', 'W': 'i', 'X': 'j', 'Y': 'k', 'Z': 'l',
                             '0': 'B', '1': 'C', '2': 'D', '3': 'E', '4': 'F', '5': 'G', '6': 'H', '7': 'I',
                             '8': 'J', '9': 'K'}
-    # print([trackingIdEncryption[letter] for letter in trackingNumber])
-    # print('Parcel trackingId: ' + "".join([trackingIdEncryption[letter] for letter in trackingNumber]))
     return "".join([trackingIdEncryption[letter] for letter in trackingNumber])
 
 def readExcelFile():
@@ -33,7 +31,7 @@ def readExcelFile():
     time_column = 'N'
     tracking_number_column = 'O'
     # loop through range values
-    for i in range(81, 91):
+    for i in range(117, 171):
         cell = tracking_number_column + str(i)
         if isinstance(ws[cell].value, str):
             # track only orders that have not been delivered yet
