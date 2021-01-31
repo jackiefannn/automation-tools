@@ -1,5 +1,5 @@
 # Automation Tools Using Web Scraping
-This project is made to automate common tasks that need to be performed in companies (mainly e-commerce businesses).
+This project is made to automate common tasks that need to be performed by e-commerce companies.
 
 ## Tracking Orders
 This script will **scrape through package tracking sites and make requests to their APIs to track 
