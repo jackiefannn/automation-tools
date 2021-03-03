@@ -22,27 +22,27 @@ def readExcelFile(startRow, endRow):
     # get current month and year worksheet
     month_year = date.today().strftime("%b-%Y").split("-")
     # worksheet = "{month}. {year}".format(month=month_year[0], year=month_year[1])
-    worksheet = 'Dec. 2020'
+    worksheet = 'Jan. 2021'
     # print(worksheet)
     ws = wb[worksheet]
     font = Font(name='Times New Roman', size=12)
     alignment = Alignment(horizontal='center')
     # get columns
     # December 2020
-    shipping_status_col = 'O'
-    time_col = 'P'
-    tracking_number_col = 'M'
+    # shipping_status_col = 'O'
+    # time_col = 'P'
+    # tracking_number_col = 'M'
     # January 2021 and on
-    # shipping_status_col = 'N'
-    # time_col = 'O'
-    # tracking_number_col = 'P'
+    shipping_status_col = 'N'
+    time_col = 'O'
+    tracking_number_col = 'P'
     # loop through range values
     for i in range(startRow, endRow+1):
         cell = tracking_number_col + str(i)
         if isinstance(ws[cell].value, str):
             # track only orders that have not been delivered yet
             if ws[tracking_number_col + str(i)].value != 'Delivered':
-                print('Tracking Number: ' + ws[cell].value)
+                print('Row ' + str(i) + ' Tracking Number: ' + ws[cell].value)
                 status = getShippingStatus(ws[cell].value)
                 if status is not None: ws[shipping_status_col + str(i)] = status
                 ws[time_col + str(i)] = datetime.datetime.now()
@@ -100,10 +100,10 @@ def getShippingStatus(trackingNum):
 
 if __name__ == '__main__':
     try:
-        # startRow = int(input('Please input the first row you would like to track: '))
-        # endRow = int(input('Please input the last row you would like to track up to: '))
-        startRow = 706
-        endRow = 750
+        startRow = int(input('Please input the first row you would like to track: '))
+        endRow = int(input('Please input the last row you would like to track up to: '))
+        # startRow = 501
+        # endRow = 550
         start = time.time()
         readExcelFile(startRow, endRow)
         end = time.time()
